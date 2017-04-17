@@ -1,0 +1,19 @@
+22
+
+# horizontal sequences:
+sum:  7 elems:  2,  7
+sum: 16 elems:  3,  8
+sum: 10 elems: 15, 20
+sum: 28 elems:  4,  9, 11, 16, 21
+sum: 33 elems:  0,  5, 10, 12, 17
+sum:  8 elems:  1,  6
+sum:  3 elems: 13, 18
+sum: 17 elems: 14, 19
+
+# vertical sequences:
+sum: 16 elems:  0,  1
+sum: 30 elems:  2,  3,  4,  5,  6
+sum: 14 elems:  7,  8,  9, 10
+sum: 19 elems: 11, 12, 13, 14
+sum: 26 elems: 15, 16, 17, 18, 19
+sum: 17 elems: 20, 21

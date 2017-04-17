@@ -1,0 +1,46 @@
+18
+
+# elements:
+# pos: 0, 0
+# pos: 0, 1
+# pos: 0, 2
+# pos: 1, 0
+# pos: 1, 1
+# pos: 1, 2
+# pos: 1, 3
+
+# horizontal sequences:
+sum: 22 elems: 0, 3, 7
+sum: 13 elems: 1, 4, 8, 11
+sum: 9  elems: 2, 5
+sum: 6  elems: 12, 15
+sum: 17 elems: 6, 9, 13, 16
+sum: 17 elems: 10, 14, 17
+
+# vertical sequences:
+sum: 20 elems: 0, 1, 2
+sum: 12 elems: 3, 4, 5, 6
+sum: 15 elems: 7, 8
+sum: 6  elems: 9, 10
+sum: 10 elems: 11, 12, 13, 14
+sum: 21 elems: 15, 16, 17
+
+# solutions:
+# 0: 9
+# 1: 3
+# 2: 8
+# 3: 5
+# 4: 2
+# 5: 1
+# 6: 2
+# 7: 8
+# 8: 7
+# 9: 1
+# 10: 5
+# 11: 1
+# 12: 2
+# 13: 3
+# 14: 4
+# 15: 4
+# 16: 9
+# 17: 8

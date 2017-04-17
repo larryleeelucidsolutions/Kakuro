@@ -1,0 +1,42 @@
+21
+
+# horizontal sequences:
+sum: 13 elems: 0, 4
+sum: 3 elems: 12, 17
+sum: 15 elems: 1, 5, 9, 13, 18
+sum: 17 elems: 6, 10, 14
+sum: 35 elems: 2, 7, 11, 15, 19
+sum: 17 elems: 3, 8
+sum: 8 elems: 16, 20
+
+# vertical sequences:
+sum: 11 elems: 0, 1
+sum: 13 elems: 2, 3
+sum: 22 elems: 4, 5, 6, 7, 8
+sum: 17 elems: 9, 10, 11
+sum: 30 elems: 12, 13, 14, 15, 16
+sum: 5 elems: 17, 18
+sum: 10 elems: 19, 20
+
+# solutions:
+# 0: 9
+# 1: 2
+# 2: 5
+# 3: 8
+# 4: 4
+# 5: 1
+# 6: 2
+# 7: 6
+# 8: 9
+# 9: 4
+# 10: 6
+# 11: 7
+# 12: 1
+# 13: 5
+# 14: 9
+# 15: 8
+# 16: 7
+# 17: 2
+# 18: 3
+# 19: 9
+# 20: 1
