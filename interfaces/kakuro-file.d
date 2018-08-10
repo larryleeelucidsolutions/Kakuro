@@ -1,6 +1,5 @@
 /++
-  Summary:
-    This program solves kakuro puzzles.
+  This program solves kakuro puzzles.
 ++/
 
 module kakuro_file;
@@ -18,16 +17,13 @@ import std.getopt;
 import std.regexp;
 import std.stream;
 
-void main (string[] args)
-{
+void main (string[] args) {
   bool help;
 
   getopt (args, "h|help", &help);
 
-  if (help)
-  {
-    std.cstream.dout.writeLine
-    (
+  if (help) {
+    std.cstream.dout.writeLine (
       "                                              \n" ~
       "Usage file [<options>] <input file>           \n" ~
       "                      [<output file>]       \n\n" ~
@@ -133,8 +129,7 @@ void main (string[] args)
     return;
   }
 
-  if (args.length < 2)
-  {
+  if (args.length < 2) {
     throw new Exception ("invalid command line (missing input file name).");
   }
 
@@ -142,23 +137,20 @@ void main (string[] args)
 
   puzzle.solve ();
 
-  if (args.length == 3)
-  {
+  if (args.length == 3) {
     std.stream.File file = new std.stream.File (args [2], FileMode.Out);
 
     writeElems (file, puzzle.elems);
 
     file.close ();
   }
-  else
-  {
+  else {
     writeElems (std.cstream.dout, puzzle.elems);
   }
 }
 
 /// parse sequence definitions:
-Puzzle parse (string file)
-{
+Puzzle parse (string file) {
   // [1] remove comments:
 
   RegExp comment = new RegExp ("#[^\n]*\n", "g");
@@ -200,14 +192,12 @@ Puzzle parse (string file)
 
   RegExp digits = new RegExp ("\\d+", "g");
 
-  foreach (string ln; lns [1 .. $ - 1])
-  {
+  foreach (string ln; lns [1 .. $ - 1]) {
     if (!def.test (ln)) throw new Exception ("syntax error: (invalid seq definition: " ~ ln ~ ")." );
 
     kakuro.core.Elem[] seqElems;
 
-    foreach (string m; digits.match (def [2]))
-    {
+    foreach (string m; digits.match (def [2])) {
       uint i = std.conv.to! (uint) (m);
 
       if (i > elems.length) throw new Exception ("invalid element index: " ~ ln ~ ".");
@@ -217,25 +207,20 @@ Puzzle parse (string file)
 
     real sum = std.conv.to! (real) (def [1]);
 
-    if (def [4])
-    {
+    if (def [4]) {
       real[] vals;
 
-      foreach (string m; digits.match (def [5]))
-      {
+      foreach (string m; digits.match (def [5])) {
         vals ~= std.conv.to! (real) (m);
       }
 
       seqs ~= new kakuro.core.Seq (sum, seqElems, vals);
     }
-    else
-    {
-      if (sum)
-      {
+    else {
+      if (sum) {
         seqs ~= new kakuro.core.Seq (sum, seqElems);
       }
-      else
-      {
+      else {
         seqs ~= new kakuro.core.Seq (seqElems);
       }
     }
@@ -247,10 +232,8 @@ Puzzle parse (string file)
 }
 
 /// writes the element values to the given stream:
-void writeElems (std.stream.Stream stream, Elem[] elems)
-{
-  foreach (uint i, Elem elem; elems)
-  {
+void writeElems (std.stream.Stream stream, Elem[] elems) {
+  foreach (uint i, Elem elem; elems) {
     std.algorithm.sort (elem.vals);
     stream.writefln ("%s: %s", i, elem.vals);
   }
