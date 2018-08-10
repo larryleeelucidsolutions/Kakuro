@@ -4,19 +4,14 @@ Kakuro Readme:
 Overview:
 ---------
 
-Kakuro is a utility for analyzing and solving kakuro puzzles. The package is organized around the kakuro library and front end. The kakuro library is a d module that defines classes for generating checking and filtering kakuro sequences. The kakuro front end provides a user interface for kakuro library and was designed to help users solve kakuro puzzles. The project is currently under development, and several key features are still pending. Detailed information concerning the kakuro library can be found in kakuro.html. Up to date information concerning the kakuro front end can be found in it's help page.
+Kakuro is a command line utility for analyzing and solving kakuro puzzles. 
 
-Background:
------------
+The package is organized around the Kakuro library and front-end. The Kakuro library is a D module that defines classes for generating, checking, and filtering Kakuro sequences. The Kakuro front-end provides a command line user interface for the Kakuro library and was designed to help users solve kakuro puzzles. The project is currently under development, and several key features are still pending.
 
-Originally started as a utility for generating kakuro sequence tables, Kakuro has evolved into a powerfull package for analyzing and solving kakuro puzzles. The project is still under development.
+Resolution Procedure:
+---------------------
 
-Procedure:
-----------
-
-The algorithms used by the kakuro package are still under active development. At this point, kakuro uses a brute force method for identifying solutions. While efficient algorithms have been implemented for identifying sequences that conform to sum and length constraints work still needs to be done to find efficient algorithms for integrating constraints emerging from individual squares.
-
-The following is an outline of the resolution procedure:
+The algorithms used by the Kakuro package are still under active development. Efficient algorithms have been implemented for identifying sequences that conform to sum and length constraints. When solving puzzles, Kakuro uses an iterative resolution procedure, which it applies iteratively to the squares within a given puzzle. The following is an outline of the resolution procedure used by Kakuro:
 
 each square has two associated sequences A, and B.
 each sequence is a family of sets.
@@ -39,4 +34,3 @@ each sequence is a family of sets.
 Author:
 ------
 * Larry D. Lee jr. <email: llee454@gmail.com>
-
