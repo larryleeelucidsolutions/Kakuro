@@ -1,7 +1,6 @@
 /++
-  Synopsis:
-    Displays information concerning the kakuro
-    sequences that fullfill the given constraints.
+  Displays information concerning the kakuro
+  sequences that fullfill the given constraints.
 ++/
 
 module kakuro_cmd;
@@ -17,8 +16,7 @@ import std.regexp;
 import std.getopt;
 import std.cstream;
 
-void main (string[] args)
-{
+void main (string[] args) {
   real   sum;
   real   len;
   string exp;
@@ -28,12 +26,10 @@ void main (string[] args)
   bool   help;
 
   // set parameter value:
-  void setParams (string option, string value)
-  {
+  void setParams (string option, string value) {
     if (!value.length) throw new Exception ("missing " ~ option ~ " value.");
 
-    switch (option)
-    {
+    switch (option) {
       case "s|sum":
         setSum = true;
         sum = std.conv.to! (uint) (value);
@@ -52,8 +48,7 @@ void main (string[] args)
   }
 
   // get command line options:
-  getopt
-  (
+  getopt (
     args,
     "s|sum", &setParams,
     "l|len", &setParams, 
@@ -61,10 +56,8 @@ void main (string[] args)
     "e|elems", &setParams
   );
 
-  if (help)
-  {
-    std.cstream.dout.writeLine 
-    (
+  if (help) {
+    std.cstream.dout.writeLine (
       "                                                 \n" ~
       "Usage: kakuro-cmd [<options>] <constraints>    \n\n" ~
 
@@ -126,32 +119,25 @@ void main (string[] args)
 
   real[][] seqs;
 
-  if (!setElems)
-  {
-    if (setSum && setLen && kakuro.checks.check (sum, len))
-    {
+  if (!setElems) {
+    if (setSum && setLen && kakuro.checks.check (sum, len)) {
       seqs = kakuro.seqs.seqs (sum, len);
     }
-    else if (setSum && !setLen && kakuro.checks.checkSum (sum))
-    {
+    else if (setSum && !setLen && kakuro.checks.checkSum (sum)) {
       seqs = kakuro.seqs.sameSum (0, sum);
     }
-    else if (!setSum && setLen && kakuro.checks.checkLen (len))
-    {
+    else if (!setSum && setLen && kakuro.checks.checkLen (len)) {
       seqs = kakuro.seqs.sameLen (0, len);
     }
-    else if (!setSum && !setLen)
-    {
+    else if (!setSum && !setLen) {
       seqs = kakuro.seqs.all ();
     }
   }
-  else // setElems:
-  {
+  else { // setElems:
     seqs = kakuro.seqs.seqs (sum, len, getElems (exp));
 
     std.cstream.dout.writeLine ("squares:");
-    foreach (real[] sqr; matrix.transpose (seqs))
-    {
+    foreach (real[] sqr; matrix.transpose (seqs)) {
       std.cstream.dout.writeLine (array.display (0, set.toSet (sqr).sort));
     }
   }
@@ -166,25 +152,21 @@ void main (string[] args)
 }
 
 /// get element values:
-real[][] getElems (string exp)
-{
+real[][] getElems (string exp) {
   const string valsRegExp = "(\\[\\d(,\\d)*\\])";
 
   const string elemsRegExp = "(\\[" ~ valsRegExp ~ "(," ~ valsRegExp ~ ")*\\])";
 
-  if (!RegExp ("^" ~ elemsRegExp ~ "$").test (exp))
-  {
+  if (!RegExp ("^" ~ elemsRegExp ~ "$").test (exp)) {
     throw new Exception ("invalid expression. ");
   }
 
   real[][] elems;
 
-  foreach (uint i, string valsExp; RegExp (valsRegExp, "g").match (exp))
-  {
+  foreach (uint i, string valsExp; RegExp (valsRegExp, "g").match (exp)) {
     real[] vals;
 
-    foreach (string valExp; RegExp ("\\d", "g").match (valsExp))
-    {
+    foreach (string valExp; RegExp ("\\d", "g").match (valsExp)) {
       vals ~= to! (real) (valExp);
     }
 
